@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);
-@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);
-@import url("https://use.typekit.net/powerlift.css");
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Concert+One|Fredoka+One&display=swap');
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -57,10 +56,10 @@ article,aside,figcaption,figure,footer,header,hgroup,main,nav,section {
 body {
   margin: 0;
   font-size: 13px;
-    font-weight: 300;
-    font-family: Poppins;
+  font-weight: 300;
+  font-family: Poppins;
   line-height: 1.5;
-  color: #111;
+  color: #204051;
   text-align: left;
   background-color: #fff;
 }
@@ -338,6 +337,7 @@ template {
 
 .h2,h2 {
   font-size: 2.25rem;
+  font-family: 'Alfa Slab One';
 }
 
 .h3,h3 {
@@ -346,6 +346,7 @@ template {
 
 .h4,h4 {
   font-size: 1.75rem;
+  font-family: 'Concert One';
 }
 
 .h5,h5 {
@@ -4236,12 +4237,13 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 }
 
 .navbar-brand {
-  font-family: blenny !important;
+  font-family: Fredoka !important;
   display: inline-block;
   margin-right: 1rem;
   font-size: 1.75rem;
   line-height: inherit;
   white-space: nowrap;
+  color: #204051 !important;
 }
 
 .navbar-brand:focus,.navbar-brand:hover {
@@ -17717,4 +17719,13 @@ a.text-decoration-underline:focus,a.text-decoration-underline:hover {
 
 .simplebar-scrollbar {
   background-color: #1f1f1f;
+}
+
+.cool{
+  box-shadow: 
+  inset 0 0 15px rgba(55, 84, 170,0),
+  inset 0 0 20px rgba(255, 255, 255,0),
+  7px 7px 15px rgba(55, 84, 170,.15),
+  -7px -7px 20px rgba(255, 255, 255,1),
+  inset 0px 0px 4px rgba(255, 255, 255,.2);
 }
