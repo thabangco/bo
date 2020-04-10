@@ -8,6 +8,10 @@ const SouthAfrica = () => {
         axios.get(`https://corona.lmao.ninja/countries/south africa`).then(res => {
             const country = res.data;
             setCountry(country);
+            setInterval(() => {
+                setCountry(country);
+                console.log('triggered')
+            }, 20000) // run every 20 seconds
         });
     }, []);
     return (
