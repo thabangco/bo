@@ -17729,3 +17729,7 @@ a.text-decoration-underline:focus,a.text-decoration-underline:hover {
   -7px -7px 20px rgba(255, 255, 255,1),
   inset 0px 0px 4px rgba(255, 255, 255,.2);
 }
+.footer{
+  background-color: #323232;
+  -webkit-tap-highlight-color: transparent;
+}
