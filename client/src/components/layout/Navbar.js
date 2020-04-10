@@ -7,21 +7,19 @@ import { logout } from '../../actions/auth';
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
-      <li>
-        <Link to='/profiles'>Developers</Link>
+      <li className='nav-item'>
+        <Link className='nav-link' to='/profiles'>Developers</Link>
       </li>
-      <li>
-        <Link to='/posts'>Posts</Link>
+      <li className='nav-item'>
+        <Link className='nav-link' to='/posts'>Posts</Link>
       </li>
-      <li>
-        <Link to='/dashboard'>
-          <i className='fas fa-user' />{' '}
-          <span className='hide-sm'>Dashboard</span>
+      <li className='nav-item'>
+        <Link className='nav-link' to='/dashboard'>
+          Dashboard
         </Link>
       </li>
-      <li>
+      <li className='nav-item'>
         <a onClick={logout} href='#!'>
-          <i className='fas fa-sign-out-alt' />{' '}
           <span className='hide-sm'>Logout</span>
         </a>
       </li>
@@ -29,29 +27,31 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   const guestLinks = (
-    <ul>
-      <li>
-        <Link to='/profiles'>Developers</Link>
+    <ul className='navbar-nav ml-xl-auto'>
+      <li className='nav-item'>
+        <Link className='nav-link' to='/profiles'>Developers</Link>
       </li>
-      <li>
-        <Link to='/register'>Register</Link>
+      <li className='nav-item'>
+        <Link className='nav-link' to='/register'>Register</Link>
       </li>
-      <li>
-        <Link to='/login'>Login</Link>
+      <li className='nav-item'>
+        <Link className='nav-link' to='/login'>Login</Link>
       </li>
     </ul>
   );
 
   return (
-    <nav className='navbar bg-dark'>
-      <h1>
-        <Link to='/'>
-          <i className='fas fa-code' /> DevConnector
+    <nav className='navbar navbar-expand-xl navbar-light shadow-lg fixed-top bg-white'>
+      <div className='container'>
+        <Link className='navbar-brand' to='/'>
+          thabang.
         </Link>
-      </h1>
       {!loading && (
-        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+        <Fragment>
+          {isAuthenticated ? authLinks : guestLinks}
+        </Fragment>
       )}
+      </div>
     </nav>
   );
 };
