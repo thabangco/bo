@@ -14,6 +14,7 @@ const SouthAfrica = () => {
             }, 20000) // run every 20 seconds
         });
     }, []);
+
     return (
     <div>
         <div className='row py-5'>
