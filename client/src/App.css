@@ -1832,10 +1832,13 @@ pre code {
   color: #111;
 }
 
-.table td,.table th {
-  padding: 1.5rem;
+.table td {
+  padding: 0.8rem 1.5rem;
   vertical-align: top;
   border-top: 1px solid #e5e5e5;
+}
+.table th {
+  padding: 1.5rem;
 }
 
 .table thead th {
@@ -1848,8 +1851,9 @@ pre code {
 }
 
 .table-sm td,.table-sm th {
-  padding: 1.25rem;
+  padding: 1rem;
 }
+
 
 .table-bordered {
   border: 1px solid #e5e5e5;

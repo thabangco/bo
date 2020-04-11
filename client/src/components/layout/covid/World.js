@@ -1,30 +1,104 @@
-import React, { useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
+import makeNumber from '../../../utils/misc'
 
-const World = () => {
-    const [country, setCountry] = useState([]);
+// url to use to fetch World data
+const world_data = 'https://corona.lmao.ninja/countries?sort=cases&&limit=10';
 
-    useEffect(() => {
-        axios.get(`https://corona.lmao.ninja/countries`).then(res => {
-            const country = res.data;
-            setCountry(country);
-            setInterval(() => {
-                setCountry(country);
-            }, 20000) // run every 20 seconds
-        });
-    }, []);
+class World extends Component {
 
-    return (
-    <div>
-        <div className='row py-5'>
-            <div className='col-sm-12 py-4'>
-                <div className='card shadow-lg'>
-    <table>{country.country}</table>
+    constructor(props) {
+        super(props);
+        this.state = {
+            mWorking: false,
+            mCountries: [],
+        };
+    }
+
+    componentDidMount() {
+
+        this.getCountries();
+        this.timer = setInterval(() => this.getCountries(), 100000000); // fetch data after every x amount of time || eventually update component based on new data triggered in the api
+
+    }
+    UNSAFE_componentWillMount() {
+
+        // Stop and set the timer to null
+        clearInterval(this.timer);
+        this.timer = null;
+    }
+
+    // function to fetch our data
+    getCountries = () => {
+
+        this.setState({ ...this.state, mWorking: true });
+
+        axios.get(world_data)
+            .then(res => {
+                this.setState({ mCountries: res.data.slice(0, 5), mWorking: false })
+                //console.log('countries', this.state.mCountries)
+            })
+            .catch(e => {
+                console.log('...', e)
+                this.setState({ ...this.state, mWorking: false });
+            })
+    }
+
+    drawCountries = () => {
+
+        const { mCountries } = this.state
+        return (
+            // no idea what this '<>' are called in react, but they work like magic
+            mCountries.map(country_on =>
+                <>
+                    <tr id={country_on.countryInfo._id} key={country_on.id}>
+                        <td><img src={country_on.countryInfo.flag} alt={country_on.country} width='20' /></td>
+                        <td>{ country_on.country }</td>
+                        <td>{ makeNumber(country_on.cases) }</td>
+                        <td>{ makeNumber(country_on.recovered) }</td>
+                        <td>{ makeNumber(country_on.deaths) }</td>
+                        <td>{ makeNumber(country_on.casesPerOneMillion) }</td>
+                    </tr>
+                </>
+            )
+        )
+    }
+
+    render() {
+
+        const { mWorking } = this.state
+
+        if (mWorking) {
+            return <p>working.</p>
+        }
+
+        return (
+            <div className='row py-1'>
+                <div className='col-sm-12 py-4'>
+                    <p className='text-muted'><span role="img" aria-label=''>&#128506;</span> <b>rest of the world &mdash; 5 highest infected countries.</b></p>
+                    <div className='card shadow-lg'>
+                        <div className='table-responsive'>
+                            <table className='table'>
+                                <thead className='cool' style={{ padding: '1.5rem' }}>
+                                    <tr>
+                                        <th><label className='m-0'><span role="img" aria-label=''>&#127757;</span></label></th>
+                                        <th><label className='m-0'>Location</label></th>
+                                        <th><label className='m-0'>Confirmed</label></th>
+                                        <th><label className='m-0'>Recovered</label></th>
+                                        <th><label className='m-0'>Deaths</label></th>
+                                        <th><label className='m-0'>Cases per 1 million people</label></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    { !mWorking ? this.drawCountries() : 'working' }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    )
-};
+        )
+    }
+}
 
 export default World;

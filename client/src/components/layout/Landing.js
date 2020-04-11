@@ -12,7 +12,7 @@ const Landing = () => {
           <h2>Covid-19 &mdash; Outbreak, South Africa.</h2>
           <SouthAfrica/>
           <World/>
-          <p className='mb-12' style={{ borderLeft: '2px solid #e9ecef', paddingLeft: '5px', color: '#e9ecef', fontWeight: 'bold' }}>as of, {new Date().toJSON().slice(0,10).replace(/-/g,' . ')}</p>
+          <p className='mb-12' style={{ borderLeft: '2px solid #e9ecef', paddingLeft: '5px', color: '#e9ecef', fontWeight: 'bold' }}>updated... {new Date().toJSON().slice(0,10).replace(/-/g,' . ')}</p>
         </div>
       </div>
     </section>
