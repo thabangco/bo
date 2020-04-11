@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import logo from '../../img/virus.svg';
+import { logout } from '../../actions/auth';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <ul>
+    <ul className='navbar-nav ml-xl-auto'>
       <li className='nav-item'>
         <Link className='nav-link' to='/profiles'>Developers</Link>
       </li>
@@ -74,6 +75,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 };
 
 Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 
@@ -83,4 +85,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
+  { logout }
 )(Navbar);
