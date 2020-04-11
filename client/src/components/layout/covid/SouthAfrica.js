@@ -1,28 +1,59 @@
-import React, { useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
+import makeNumber from '../../../utils/misc'
 
-const SouthAfrica = () => {
-    const [country, setCountry] = useState([]);
+// url to use to fetch SA data
+const southy_data = 'https://corona.lmao.ninja/countries/zaf';
 
-    useEffect(() => {
-        axios.get(`https://corona.lmao.ninja/countries/south africa`).then(res => {
-            const country = res.data;
-            setCountry(country);
-            setInterval(() => {
-                setCountry(country);
-                console.log('triggered')
-            }, 20000) // run every 20 seconds
-        });
-    }, []);
+class SouthAfrica extends Component{
 
-    return (
-    <div>
-        <div className='row py-5'>
+    constructor(props) {
+        super(props);
+        this.state = {
+            mWorking: false,
+            mSouthy: [],
+        };
+    }
+
+    componentDidMount() {
+
+        this.getSouthy();
+        this.timer = setInterval(() => this.getSouthy(), 100000000); // fetch data after every x amount of time || eventually update component based on new data triggered in the api
+    }
+
+    UNSAFE_componentWillMount() {
+
+        // Stop and set the timer to null
+        clearInterval(this.timer);
+        this.timer = null;
+    }
+
+    // function to fetch our data
+    getSouthy = () => {
+
+        this.setState({ ...this.state, mWorking: true });
+
+        axios.get(southy_data)
+            .then(res => {
+                this.setState({ mSouthy: res.data, mWorking: false })
+            })
+            .catch(e => {
+                console.log('...', e)
+                this.setState({ ...this.state, mWorking: false });
+            })
+    }
+
+    render(){
+
+        const { mSouthy, mWorking } = this.state
+
+        return (
+            <div className='row py-5'>
             <div className='col-sm-3 py-4'>
                 <div className='card shadow-lg'>
                     <div className='card-body'>
                         <p className='text-muted mb-0'>TOTAL CASES</p>
-                        <h4>{country.cases}</h4>
+                        <h4>{ !mWorking ? makeNumber(mSouthy.cases) : '...' }</h4>
                     </div>
                 </div>
             </div>
@@ -30,7 +61,7 @@ const SouthAfrica = () => {
                 <div className='card shadow-lg'>
                     <div className='card-body'>
                         <p className='text-muted mb-0'>TOTAL DEATHS</p>
-                        <h4>{country.deaths}</h4>
+                        <h4>{ !mWorking ? makeNumber(mSouthy.deaths) : '...' }</h4>
                     </div>
                 </div>
             </div>
@@ -38,7 +69,7 @@ const SouthAfrica = () => {
                 <div className='card shadow-lg rounded'>
                     <div className='card-body'>
                         <p className='text-muted mb-0'>TOTAL RECOVERIES</p>
-                        <h4>{country.recovered}</h4>
+                        <h4>{ !mWorking ? makeNumber(mSouthy.recovered) : '...' }</h4>
                     </div>
                 </div>
             </div>
@@ -46,13 +77,14 @@ const SouthAfrica = () => {
                 <div className='card shadow-lg rounded'>
                     <div className='card-body'>
                         <p className='text-muted mb-0'>ACTIVE CASES</p>
-                        <h4>{country.active}</h4>
+                        <h4>{ !mWorking ? makeNumber(mSouthy.active) : '...' }</h4>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    )
-};
+        )
+    }
+
+}
 
 export default SouthAfrica;
