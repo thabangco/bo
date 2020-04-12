@@ -18,7 +18,7 @@ class SouthAfrica extends Component{
     componentDidMount() {
 
         this.getSouthy();
-        this.timer = setInterval(() => this.getSouthy(), 100000000); // fetch data after every x amount of time || eventually update component based on new data triggered in the api
+        this.timer = setInterval(() => this.getSouthy(), 300*1000); // fetch data after every x amount of time || eventually update component based on new data triggered in the api
     }
 
     UNSAFE_componentWillMount() {
@@ -52,32 +52,32 @@ class SouthAfrica extends Component{
             <div className='col-sm-3 py-4'>
                 <div className='card shadow-lg'>
                     <div className='card-body'>
-                        <p className='text-muted mb-0'>TOTAL CASES</p>
-                        <h4>{ !mWorking ? makeNumber(mSouthy.cases) : '...' }</h4>
+                        <p className='gray-light mb-0 font-weight-bold'>confirmed</p>
+                        <h4 className='gray-dark'>{ !mWorking ? makeNumber(mSouthy.cases) : '...' }</h4>
                     </div>
                 </div>
             </div>
             <div className='col-sm-3 py-4'>
                 <div className='card shadow-lg'>
                     <div className='card-body'>
-                        <p className='text-muted mb-0'>TOTAL DEATHS</p>
-                        <h4>{ !mWorking ? makeNumber(mSouthy.deaths) : '...' }</h4>
+                        <p className='gray-light mb-0 font-weight-bold'>deceased</p>
+                        <h4 className='gray-dark'>{ !mWorking ? makeNumber(mSouthy.deaths) : '...' }</h4>
                     </div>
                 </div>
             </div>
             <div className='col-sm-3 py-4'>
                 <div className='card shadow-lg rounded'>
                     <div className='card-body'>
-                        <p className='text-muted mb-0'>TOTAL RECOVERIES</p>
-                        <h4>{ !mWorking ? makeNumber(mSouthy.recovered) : '...' }</h4>
+                        <p className='green-apple-2 mb-0 font-weight-bold'>recovered</p>
+                        <h4 className='green-apple-2'>{ !mWorking ? makeNumber(mSouthy.recovered) : '...' }</h4>
                     </div>
                 </div>
             </div>
             <div className='col-sm-3 py-4'>
                 <div className='card shadow-lg rounded'>
                     <div className='card-body'>
-                        <p className='text-muted mb-0'>ACTIVE CASES</p>
-                        <h4>{ !mWorking ? makeNumber(mSouthy.active) : '...' }</h4>
+                        <p className='gray-light mb-0 font-weight-bold'>active</p>
+                        <h4 className='gray-dark'>{ !mWorking ? makeNumber(mSouthy.active) : '...' }</h4>
                     </div>
                 </div>
             </div>

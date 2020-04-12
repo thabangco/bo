@@ -4241,10 +4241,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 }
 
 .navbar-brand {
-  font-family: Fredoka !important;
   display: inline-block;
   margin-right: 1rem;
-  font-size: 1.75rem;
+  font-size: 0.95rem;
   line-height: inherit;
   white-space: nowrap;
   color: #204051 !important;
@@ -17736,4 +17735,28 @@ a.text-decoration-underline:focus,a.text-decoration-underline:hover {
 .footer{
   background-color: #323232;
   -webkit-tap-highlight-color: transparent;
+}
+.danger-cherry-1{
+  color: rgba(255,7,58,.6);
+}
+.danger-cherry-2{
+  color: #ff073a;
+}
+.gray-light{
+  color: rgba(108,117,125,.6);
+}
+.gray-dark{
+  color: #6c757d;
+}
+.green-apple-1{
+  color: rgba(40,167,69,.6);
+}
+.green-apple-2{
+  color: #28a745;
+}
+.blue-berry-1{
+  color: rgba(0,123,255,.6);
+}
+.blue-berry-2{
+  color: #007bff;;
 }
