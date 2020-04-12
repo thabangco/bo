@@ -11,7 +11,7 @@ const Landing = () => {
           <Alert/>
           <SouthAfrica/>
           <World/>
-          <label className='mb-12 small'>data updates every 10 min.</label>
+          <label className='mb-12 small'>data updates every 5 minutes.</label>
           <p className='mt-12 small font-weight-bold'>&copy; 2020, made by thabang.</p>
     </section>
   );

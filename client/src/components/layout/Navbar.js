@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="container">
 
         <a className="navbar-brand" href="/">
-          <img src={logo} alt='' width='42px' /> &nbsp; nCov19 &mdash; South Africa.
+          <img src={logo} alt='' width='42px' /> &nbsp; <label className='d-none d-lg-inline'>nCov19 &mdash; South Africa.</label>
         </a>
 
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLandingCollapse" aria-controls="navbarLandingCollapse" aria-expanded="false" aria-label="Toggle navigation">
