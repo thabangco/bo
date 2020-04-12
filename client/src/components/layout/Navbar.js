@@ -31,7 +31,7 @@ const Navbar = () => {
               <a className="nav-link" href="https://github.com/thabangco/bo" data-toggle="smooth-scroll">About</a>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="mailto:thabang@vuyiswa.com" data-toggle="smooth-scroll">Send feedback</a>
+              <a className="nav-link" href="mailto:thabang@vuyiswa.com" data-toggle="smooth-scroll">Send feedback <span className=' float-right d-lg-none ml-lg-4 d-xl-block'>&#10230;</span></a>
             </li>
           </ul>
 
