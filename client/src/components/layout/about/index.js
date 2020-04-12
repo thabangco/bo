@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import makeNumber from '../../../utils/misc'
 
 // url to use to fetch SA data
-const southy_data = 'https://pomber.github.io/covid19/timeseries.json';
+const southy_data = 'https://corona.lmao.ninja/countries/zaf';
 
-class Country extends Component{
+class About extends Component{
 
     constructor(props) {
         super(props);
-        this.chartReference = React.createRef();
         this.state = {
             mWorking: false,
             mSouthy: [],
@@ -16,7 +16,7 @@ class Country extends Component{
     }
 
     componentDidMount() {
-        
+
         this.getSouthy();
         this.timer = setInterval(() => this.getSouthy(), 100000000); // fetch data after every x amount of time || eventually update component based on new data triggered in the api
     }
@@ -35,7 +35,7 @@ class Country extends Component{
 
         axios.get(southy_data)
             .then(res => {
-                this.setState({ mSouthy: res.data["South Africa"], mWorking: false })
+                this.setState({ mSouthy: res.data, mWorking: false })
             })
             .catch(e => {
                 console.log('...', e)
@@ -45,22 +45,17 @@ class Country extends Component{
 
     render(){
 
-        const { mSouthy } = this.state
-        let data = mSouthy
+        const { mSouthy, mWorking } = this.state
 
         return (
             <div className='row py-5'>
-            <div className='col-sm-12 py-4'>
-                <div className='card shadow-lg'>
-                    <div className='card-body'>
-                        { console.log(data) /** {data} TODO: draw a visual graph */ }
-                    </div>
+                <div className='col-sm-3 py-4'>
+                    <label>label</label>
                 </div>
-            </div>
         </div>
         )
     }
 
 }
 
-export default Country;
+export default About;

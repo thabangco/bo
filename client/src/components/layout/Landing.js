@@ -1,20 +1,18 @@
 import React from 'react';
 import SouthAfrica from './covid/SouthAfrica';
 import World from './covid/World';
+import Alert from './Alert';
 
 const Landing = () => {
 
   return (
     <section className='container py-12'>
-      <div className='dark-overlay'>
-        <div className='landing-inner'>
-          <div className='my-12'/>
-          <h2>Covid-19 &mdash; Outbreak, South Africa.</h2>
+          <div className='' />
+          <Alert/>
           <SouthAfrica/>
           <World/>
-          <p className='mb-12' style={{ borderLeft: '2px solid #e9ecef', paddingLeft: '5px', color: '#e9ecef', fontWeight: 'bold' }}>updated... {new Date().toJSON().slice(0,10).replace(/-/g,' . ')}</p>
-        </div>
-      </div>
+          <label className='mb-12 small'>data updates every 10 min.</label>
+          <p className='mt-12 small font-weight-bold'>&copy; 2020, made by thabang.</p>
     </section>
   );
 };
