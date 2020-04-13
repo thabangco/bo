@@ -18,7 +18,7 @@ class World extends Component {
     componentDidMount() {
 
         this.getCountries();
-        this.timer = setInterval(() => this.getCountries(), 100000000); // fetch data after every x amount of time || eventually update component based on new data triggered in the api
+        this.timer = setInterval(() => this.getCountries(), 300*1000); // fetch data after every x amount of time || eventually update component based on new data triggered in the api
 
     }
     UNSAFE_componentWillMount() {
@@ -53,11 +53,11 @@ class World extends Component {
                 <>
                     <tr id={country_on.countryInfo._id} key={country_on.id}>
                         <td><img src={country_on.countryInfo.flag} alt={country_on.country} width='20' /></td>
-                        <td>{ country_on.country }</td>
-                        <td>{ makeNumber(country_on.cases) }</td>
-                        <td>{ makeNumber(country_on.recovered) }</td>
-                        <td>{ makeNumber(country_on.deaths) }</td>
-                        <td>{ makeNumber(country_on.casesPerOneMillion) }</td>
+                        <td><label className='font-weight-bold small'>{ country_on.country }</label></td>
+                        <td><label className='font-weight-bold small'>{ makeNumber(country_on.cases) }</label></td>
+                        <td><label className='font-weight-bold small'>{ makeNumber(country_on.recovered) }</label></td>
+                        <td><label className='font-weight-bold small'>{ makeNumber(country_on.deaths) }</label></td>
+                        <td><label className='font-weight-bold small'>{ makeNumber(country_on.casesPerOneMillion) }</label></td>
                     </tr>
                 </>
             )
@@ -82,11 +82,11 @@ class World extends Component {
                                 <thead className='cool' style={{ padding: '1.5rem' }}>
                                     <tr>
                                         <th><label className='m-0'><span role="img" aria-label=''>&#127757;</span></label></th>
-                                        <th><label className='m-0'>Location</label></th>
-                                        <th><label className='m-0'>Confirmed</label></th>
-                                        <th><label className='m-0'>Recovered</label></th>
-                                        <th><label className='m-0'>Deaths</label></th>
-                                        <th><label className='m-0'>Cases per 1 million people</label></th>
+                                        <th><label className='m-0 font-weight-bold small'>Location</label></th>
+                                        <th><label className='m-0 font-weight-bold small'>Confirmed</label></th>
+                                        <th><label className='m-0 font-weight-bold small'>Recovered</label></th>
+                                        <th><label className='m-0 font-weight-bold small'>Deaths</label></th>
+                                        <th><label className='m-0 font-weight-bold small'>Cases per 1 million people</label></th>
                                     </tr>
                                 </thead>
                                 <tbody>
