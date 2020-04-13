@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import makeNumber from '../../../utils/misc'
+import CountUp from 'react-countup'
 
 // url to use to fetch World data
 const world_data = 'https://corona.lmao.ninja/countries?sort=cases&&limit=10';
@@ -54,10 +54,10 @@ class World extends Component {
                     <tr id={country_on.countryInfo._id} key={country_on.id}>
                         <td><img src={country_on.countryInfo.flag} alt={country_on.country} width='20' /></td>
                         <td><label className='font-weight-bold small'>{ country_on.country }</label></td>
-                        <td><label className='font-weight-bold small'>{ makeNumber(country_on.cases) }</label></td>
-                        <td><label className='font-weight-bold small'>{ makeNumber(country_on.recovered) }</label></td>
-                        <td><label className='font-weight-bold small'>{ makeNumber(country_on.deaths) }</label></td>
-                        <td><label className='font-weight-bold small'>{ makeNumber(country_on.casesPerOneMillion) }</label></td>
+                        <td><label className='font-weight-bold small'><CountUp start={0} end={ country_on.cases} /></label></td>
+                        <td><label className='font-weight-bold small'><CountUp start={0} end={ country_on.recovered}/></label></td>
+                        <td><label className='font-weight-bold small'><CountUp start={0} end={ country_on.deaths}/></label></td>
+                        <td><label className='font-weight-bold small'><CountUp start={0} end={ country_on.casesPerOneMillion}/></label></td>
                     </tr>
                 </>
             )

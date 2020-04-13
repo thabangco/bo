@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 // url to use to fetch SA data
-const southy_data = 'https://pomber.github.io/covid19/timeseries.json';
+const southy_data = 'https://covid-za-api.herokuapp.com/cases/confirmed';
 
 class Country extends Component{
 
@@ -28,6 +28,10 @@ class Country extends Component{
         this.timer = null;
     }
 
+    componentDidUpdate(){
+        
+    }
+
     // function to fetch our data
     getSouthy = () => {
 
@@ -35,7 +39,8 @@ class Country extends Component{
 
         axios.get(southy_data)
             .then(res => {
-                this.setState({ mSouthy: res.data["South Africa"], mWorking: false })
+                this.setState({ mSouthy: res.data, mWorking: false })
+                console.log('...', res.data)
             })
             .catch(e => {
                 console.log('...', e)
@@ -46,14 +51,14 @@ class Country extends Component{
     render(){
 
         const { mSouthy } = this.state
-        let data = mSouthy
+        let data = {mSouthy}
 
         return (
             <div className='row py-5'>
             <div className='col-sm-12 py-4'>
                 <div className='card shadow-lg'>
                     <div className='card-body'>
-                        { console.log(data) /** {data} TODO: draw a visual graph */ }
+                        { console.log(data.case_id) /** {data} TODO: draw a visual graph */ }
                     </div>
                 </div>
             </div>
