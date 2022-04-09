@@ -6,7 +6,7 @@
     "@opd/g2plot-react": "^1.1.2",
     "bootstrap-icons": "^1.0.0-alpha3",
     "chart.js": "^2.9.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.13.0",
     "react-chartjs-2": "^2.9.0",
     "react-countup": "^4.3.3",
